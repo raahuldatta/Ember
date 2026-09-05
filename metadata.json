@@ -1,0 +1,6 @@
+{
+  "name": "Ember",
+  "description": "AI Incident response platform that automates triage, root cause analysis, and remediation workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
