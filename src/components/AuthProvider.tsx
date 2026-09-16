@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { firebaseEnabled, auth, googleAuthProvider } from '../lib/firebase';
 
 export type AppUser = {
@@ -37,7 +37,7 @@ const DEMO_USER: AppUser = {
   demo: true,
 };
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AppUser | null>(null);
   const [loading, setLoading] = useState(true);
 

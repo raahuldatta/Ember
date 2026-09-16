@@ -49,8 +49,17 @@ export default function Dashboard({
 
   useEffect(() => {
     if (!isLivePolling) return;
-    const interval = setInterval(fetchIncidents, 10000);
-    return () => clearInterval(interval);
+    const interval = setInterval(() => {
+      if (document.visibilityState === 'visible') fetchIncidents();
+    }, 10000);
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') fetchIncidents();
+    };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, [isLivePolling]);
 
   useEffect(() => {

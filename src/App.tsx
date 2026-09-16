@@ -54,7 +54,9 @@ function MainApp() {
       }
     };
 
-    const intervalId = setInterval(pollForIncidents, 10000);
+    const intervalId = setInterval(() => {
+      if (document.visibilityState === 'visible') pollForIncidents();
+    }, 10000);
     return () => clearInterval(intervalId);
   }, [user, getToken]);
 

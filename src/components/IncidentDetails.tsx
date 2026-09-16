@@ -42,6 +42,13 @@ export default function IncidentDetails({ id, onBack }: { id: number; onBack: ()
   }, [id]);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      if (document.visibilityState === 'visible') fetchDetails();
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [id]);
+
+  useEffect(() => {
     let mounted = true;
     const pingView = async () => {
       const token = await getToken();
